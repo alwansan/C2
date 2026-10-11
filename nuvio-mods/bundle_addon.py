@@ -13,6 +13,20 @@ class URL {constructor(v){const m=/^(https?):\\/\\/([^/;?#]+)([^?#]*)(?:\\?([^#]
 '''
  for name in ['errors','cache','api','mapping','pager','discovery','manifest','addon']:
   code=(source/f'{name}.js').read_text()
+  if name=='discovery':
+   needle='return this.cache.get(key,this.config.catalogTtl,async()=>{'
+   replacement=needle+'''
+      // Fresh disk cache avoids rediscovering every collection after each process restart.
+      try {
+        const cached=JSON.parse(await readFile(join(this.config.dataDir,`discovery-${key}.json`),'utf8'));
+        const age=Date.now()-Date.parse(cached.observedAt);
+        if(age>=0&&age<this.config.catalogTtl&&cached.language===opts.language&&cached.level===opts.level&&Array.isArray(cached.categories)&&Array.isArray(cached.groups)&&Array.isArray(cached.collections)) {
+          catalogDefinitions(cached,opts);this.status={ready:true,source:'disk-fresh',observedAt:cached.observedAt};return {...cached,source:'disk-fresh'};
+        }
+      } catch {}
+'''
+   assert code.count(needle)==1
+   code=code.replace(needle,replacement)
   if name=='api':
    start=code.index('  async get('); end=code.index('  categories()',start)
    code=code.replace('fetchImpl = fetch','fetchImpl = undefined')
