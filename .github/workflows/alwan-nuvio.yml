@@ -23,7 +23,9 @@ jobs:
           git clone --filter=blob:none https://github.com/NuvioMedia/NuvioMobile.git nuvio
           git -C nuvio checkout db0c50b503039863909c86405907462bf1752193
       - name: Apply reviewed source modifications
-        run: python nuvio-mods/install.py nuvio
+        run: |
+          python nuvio-mods/install.py nuvio
+          python nuvio-mods/apply_performance_p3.py nuvio
       - name: Build clean full APK
         working-directory: nuvio
         run: |
