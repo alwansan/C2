@@ -39,7 +39,7 @@ jobs:
           echo 'feb45afa85414c785d101919ca51eca99354b6f0294b2ddcb00086541da2f566  /tmp/nuvio-official-0.5.9.apk' | sha256sum --check --status
           python nuvio-mods/configure_public_backend_from_official_apk.py /tmp/nuvio-official-0.5.9.apk nuvio
           rm -f /tmp/nuvio-official-0.5.9.apk
-          ./nuvio/gradlew -p nuvio :composeApp:verifyAlwanAccountBackend -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore
+          ./nuvio/gradlew -p nuvio :composeApp:verifyAlwanAccountBackend -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore --no-configuration-cache
       - name: Run add-on regression tests
         run: node --test test/*.test.js
       - name: Build optimized arm64 Release APK (test signed)
