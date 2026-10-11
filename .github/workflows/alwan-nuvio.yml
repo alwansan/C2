@@ -28,7 +28,7 @@ jobs:
         working-directory: nuvio
         run: |
           chmod +x gradlew
-          ./gradlew :androidApp:assembleFullDebug :androidApp:assembleFullDebugAndroidTest -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore --stacktrace
+          ./gradlew :androidApp:assembleFullDebug :androidApp:assembleFullDebugAndroidTest :androidApp:assembleFullRelease -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore -Palwan.testSigning=true --stacktrace
           ./gradlew --stop
       - name: Enable emulator acceleration
         run: |
@@ -60,6 +60,13 @@ jobs:
             cat restore-test.txt
             grep -q 'OK (1 test)' restore-test.txt
             adb logcat -d -b crash > crash-log.txt
+            adb uninstall com.nuvio.cinemana
+            adb install nuvio/androidApp/build/outputs/apk/full/release/androidApp-full-x86_64-release.apk
+            adb shell appops set com.nuvio.cinemana MANAGE_EXTERNAL_STORAGE allow
+            adb shell am start -W -n com.nuvio.cinemana/com.nuvio.app.launcher.AppIconDefault | tee release-launch.txt
+            adb shell pidof com.nuvio.cinemana
+            adb logcat -d -b crash > release-crash.txt
+            test ! -s release-crash.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -67,7 +74,9 @@ jobs:
           path: |
             nuvio/androidApp/build/outputs/apk/full/debug/*.apk
             nuvio/androidApp/build/outputs/apk/androidTest/full/debug/*.apk
+            nuvio/androidApp/build/outputs/apk/full/release/*.apk
             nuvio/composeApp/build/reports/
             *-test.txt
             crash-log.txt
+            release-*.txt
           if-no-files-found: warn

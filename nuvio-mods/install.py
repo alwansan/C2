@@ -29,22 +29,12 @@ def prepare(root, kit, package):
  names=known_preferences(root)
  names_path='composeApp/src/androidMain/kotlin/com/nuvio/app/core/storage/KnownSharedPreferences.kt'
  names_content=('package com.nuvio.app.core.storage\ninternal object KnownSharedPreferences { val names = listOf('+','.join(json.dumps(n) for n in names)+') }\n').encode()
+ spec['files']=[f for f in spec['files'] if f['path']!=names_path]
  spec['files'].append({'path':names_path,'old':None,'new':base64.b64encode(names_content).decode(),'hunks':[]})
  changes=[]
  for item in spec['files']:
   path=safe(root,item['path']);current=path.read_bytes() if path.exists() else None
   payload=base64.b64decode(item['new'])
-  if item['path'].endswith('/core/storage/AlwanStorage.kt'):
-   anchor=b'            val prefs=File(context.applicationInfo.dataDir,"shared_prefs")'
-   replacement=b'''            KnownSharedPreferences.names.forEach { name ->
-                if(name !in observed) {
-                    val p=context.getSharedPreferences(name,Context.MODE_PRIVATE)
-                    p.registerOnSharedPreferenceChangeListener(listener);observed[name]=p
-                }
-            }
-            val prefs=File(context.applicationInfo.dataDir,"shared_prefs")'''
-   if payload.count(anchor)!=1:raise ValueError('Storage snapshot anchor changed')
-   payload=payload.replace(anchor,replacement)
   if package!='com.nuvio.cinemana' and item['path']=='androidApp/build.gradle.kts':payload=payload.replace(b'com.nuvio.cinemana',package.encode())
   if current==payload:continue
   if item['old'] is None:
