@@ -27,6 +27,7 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew :androidApp:assembleFullDebug :androidApp:assembleFullDebugAndroidTest -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore --stacktrace
+          ./gradlew --stop
       - name: Enable emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -39,18 +40,20 @@ jobs:
           arch: x86_64
           profile: pixel_2
           disable-animations: true
+          ram-size: 1536M
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
           script: |
             adb install -r nuvio/androidApp/build/outputs/apk/full/debug/androidApp-full-debug.apk
             adb install -r nuvio/androidApp/build/outputs/apk/androidTest/full/debug/androidApp-full-debug-androidTest.apk
             adb shell appops set com.nuvio.cinemana MANAGE_EXTERNAL_STORAGE allow
-            adb shell am instrument -w -e class com.nuvio.android.AlwanCleanIntegrationTest -e stage prepare com.nuvio.cinemana.test/androidx.test.runner.AndroidJUnitRunner > prepare-test.txt
+            adb shell am instrument -w -e class com.nuvio.android.AlwanCleanIntegrationTest -e stage prepare com.nuvio.cinemana.test/androidx.test.runner.AndroidJUnitRunner | tee prepare-test.txt
             cat prepare-test.txt
             grep -q 'OK (1 test)' prepare-test.txt
             adb shell am force-stop com.nuvio.cinemana
             adb uninstall com.nuvio.cinemana
             adb install -r nuvio/androidApp/build/outputs/apk/full/debug/androidApp-full-debug.apk
             adb shell appops set com.nuvio.cinemana MANAGE_EXTERNAL_STORAGE allow
-            adb shell am instrument -w -e class com.nuvio.android.AlwanCleanIntegrationTest -e stage verify com.nuvio.cinemana.test/androidx.test.runner.AndroidJUnitRunner > restore-test.txt
+            adb shell am instrument -w -e class com.nuvio.android.AlwanCleanIntegrationTest -e stage verify com.nuvio.cinemana.test/androidx.test.runner.AndroidJUnitRunner | tee restore-test.txt
             cat restore-test.txt
             grep -q 'OK (1 test)' restore-test.txt
             adb logcat -d -b crash > crash-log.txt

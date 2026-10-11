@@ -36,7 +36,7 @@ def prepare(root, kit, package):
     else:raise ValueError('Upstream changed a required anchor: '+item['path']+'\nNo files have been modified. Review compatibility before applying.')
    result=result.encode()
    if package!='com.nuvio.cinemana' and item['path']=='androidApp/build.gradle.kts':result=result.replace(b'com.nuvio.cinemana',package.encode())
-  changes.append((path,current,result))
+  if result!=current:changes.append((path,current,result))
  return changes
 
 def install(root,kit,package,dry=False):
