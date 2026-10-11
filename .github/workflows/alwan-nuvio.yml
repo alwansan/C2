@@ -1,0 +1,37 @@
+name: Alwan clean Nuvio build
+on:
+  push:
+    branches: [alwan-clean-nuvio]
+    paths: ['nuvio-mods/**', '.github/workflows/alwan-nuvio.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Fetch exact clean Nuvio source
+        run: |
+          git clone --filter=blob:none https://github.com/NuvioMedia/NuvioMobile.git nuvio
+          git -C nuvio checkout db0c50b503039863909c86405907462bf1752193
+      - name: Apply reviewed source modifications
+        run: python nuvio-mods/install.py nuvio
+      - name: Build clean full APK
+        working-directory: nuvio
+        run: |
+          chmod +x gradlew
+          ./gradlew :androidApp:assembleFullDebug -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore --stacktrace
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: AlwanCinema-clean-0.5.9
+          path: |
+            nuvio/androidApp/build/outputs/apk/full/debug/*.apk
+            nuvio/composeApp/build/reports/
+          if-no-files-found: warn
