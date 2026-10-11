@@ -1,0 +1,54 @@
+name: Package clean AlwanCinema deliverables
+on:
+  push:
+    branches: [alwan-clean-nuvio]
+    paths: ['.github/workflows/alwan-package.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: AlwanCinema-clean-0.5.9
+          run-id: 38154339210
+          github-token: ${{ github.token }}
+          path: build-artifact
+      - name: Prepare full source and portable installer kit
+        run: |
+          git clone --filter=blob:none https://github.com/NuvioMedia/NuvioMobile.git NuvioAlwanCinema
+          git -C NuvioAlwanCinema checkout db0c50b503039863909c86405907462bf1752193
+          python nuvio-mods/install.py NuvioAlwanCinema
+          python nuvio-mods/install.py NuvioAlwanCinema
+          python - <<'PY'
+          from pathlib import Path
+          import shutil,zipfile,gzip
+          out=Path('deliverables');out.mkdir()
+          kit=Path('AlwanCinema_ModKit');kit.mkdir()
+          for name in ['install.py','README_AR.md','bundle_addon.py','test_installer.py','test_bundle.mjs']:
+              shutil.copy2(Path('nuvio-mods')/name,kit/name)
+          (kit/'patches.json').write_bytes(gzip.decompress(Path('nuvio-mods/patches.json.gz').read_bytes()))
+          for path in Path('.').rglob('*'):
+              if not path.is_file():continue
+              if path.parts[0] in {'.git','NuvioAlwanCinema','AlwanCinema_ModKit','deliverables','build-artifact','nuvio-mods','node_modules'}:continue
+              if path.name.startswith('alwan-') and path.suffix=='.yml':continue
+              target=kit/'addon-source'/path;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,target)
+          for directory,name in [(kit,'AlwanCinema_ModKit_0.5.9.zip'),(Path('NuvioAlwanCinema'),'NuvioAlwanCinema_0.5.9_Clean_Source.zip')]:
+              with zipfile.ZipFile(out/name,'w',zipfile.ZIP_DEFLATED,compresslevel=6)as z:
+                  for path in directory.rglob('*'):
+                      if path.is_file() and '.git' not in path.parts:z.write(path,path)
+          apk=next(Path('build-artifact').rglob('*full-debug.apk'))
+          shutil.copy2(apk,out/'AlwanCinema_0.5.9_Clean.apk')
+          with zipfile.ZipFile(apk)as z:
+              r=z.getinfo('resources.arsc');assert r.compress_type==0
+          print('Final source, portable installer ZIP, and exact tested build APK packaged.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AlwanCinema-complete-delivery
+          path: deliverables/*
