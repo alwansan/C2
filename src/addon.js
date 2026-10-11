@@ -51,7 +51,8 @@ export class CinemanaAddon {
     assert(extras.skip===undefined || /^\d+$/.test(extras.skip),'OFFSET','Invalid skip');
     const skip=Number(extras.skip||0);
     const index=await this.discovery.get(opts);
-    const descriptor=catalogDefinitions(index,opts).find(d=>d.id===id&&d.type===type);
+    const descriptor=catalogDefinitions(index,opts).find(d=>d.id===id&&d.type===type)
+      || catalogDefinitions(index,opts,{includeLanguageVariants:true}).find(d=>d.id===id&&d.type===type);
     assert(descriptor,'CATALOG','Unknown Cinemana catalog',404);
     const query=text(extras.search),staff=text(extras.staff);
     assert(query.length<=160&&staff.length<=160,'SEARCH','Search too long');
@@ -65,11 +66,19 @@ export class CinemanaAddon {
       const ids=[...new Set(matches.map(row=>text(row[idKey])))];
       assert(ids.length===1,'FILTER','Unknown or ambiguous native filter');return ids[0];
     };
-    const categoryChoice=resolveChoice(text(extras.genre),index.categories,'nb',c=>localized(c,'title',opts.language));
+    const genre=text(extras.genre);
+    // In a fixed category, the standard genre control selects its language.
+    // Native language IDs are explicitly tagged to avoid category-ID collisions.
+    const genreLanguage=descriptor.category?/\[lang:([^\]\r\n]{1,200})\]$/.exec(genre)?.[1]:undefined;
+    const categoryChoice=genreLanguage?undefined:resolveChoice(genre,index.categories,'nb',c=>localized(c,'title',opts.language));
     assert(!descriptor.category||!categoryChoice||descriptor.category===categoryChoice,'FILTER','Category does not match this section');
     const category=descriptor.category||categoryChoice;
     const languages=index.categories.filter(c=>!category||text(c.nb)===category).flatMap(c=>array(c.langArray));
-    const languageChoice=resolveChoice(text(extras.language),languages,'langNb',l=>text(l[opts.language==='ar'?'lang_ar_title':'lang_en_title']));
+    const languageLabel=l=>text(l[opts.language==='ar'?'lang_ar_title':'lang_en_title']);
+    const genreLanguageChoice=resolveChoice(genreLanguage,languages,'langNb',languageLabel);
+    const explicitLanguageChoice=resolveChoice(text(extras.language),languages,'langNb',languageLabel);
+    assert(!genreLanguageChoice||!explicitLanguageChoice||genreLanguageChoice===explicitLanguageChoice,'FILTER','Conflicting language filters');
+    const languageChoice=explicitLanguageChoice||genreLanguageChoice;
     assert(!descriptor.lang||!languageChoice||descriptor.lang===languageChoice,'FILTER','Language does not match this section');
     const lang=descriptor.lang||languageChoice;
     const year=text(extras.year);let first,last;
@@ -122,7 +131,7 @@ export class CinemanaAddon {
       })).flat();
     } else if(descriptor.source==='banner'||descriptor.source==='newly') {
       finite=true;load=async page=>{
-        if(page!==1) return [];
+        if(page!==0) return [];
         const result=descriptor.source==='banner'?await this.api.banner(opts.level):await this.api.newly(opts.level);
         assert(Array.isArray(result),'UPSTREAM_SHAPE','Invalid curated feed',502);return result;
       };

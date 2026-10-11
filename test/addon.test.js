@@ -8,14 +8,14 @@ import { fixture,FakeApi,opts,video } from './fixtures.js';
 test('manifest discovers categories, category languages, home groups and nested collections',async t=>{
   const config=await fixture(t),api=new FakeApi(),addon=new CinemanaAddon(api,config);
   const manifest=await addon.manifest(opts,'http://127.0.0.1:7000');
-  for(const id of ['cinemana-all-movie','cinemana-search-series','cinemana-category-4-movie','cinemana-category-4-language-12-series','cinemana-group-50-movie','cinemana-group-51-series','cinemana-collection-99-series','cinemana-collection-99-group-60-movie']) assert(manifest.catalogs.some(c=>c.id===id),id);
+  for(const id of ['cinemana-all-movie','cinemana-search-series','cinemana-category-4-movie','cinemana-group-50-movie','cinemana-group-51-series','cinemana-collection-99-series','cinemana-collection-99-group-60-movie']) assert(manifest.catalogs.some(c=>c.id===id),id);
   assert.equal(manifest.cinemana.discoveryComplete,true);assert.equal(manifest.cinemana.categories,2);assert.equal(manifest.cinemana.groups,2);assert.equal(manifest.cinemana.collections,1);
   assert.equal(manifest.logo,'http://127.0.0.1:7000/logo.png');assert(manifest.catalogs.find(c=>c.id==='cinemana-all-movie').extra.find(e=>e.name==='genre').options.includes('أنمي [4]'));
   assert.equal(new Set(manifest.catalogs.map(c=>c.type+'/'+c.id)).size,manifest.catalogs.length);
 });
 test('opaque native group/category identifiers are not incorrectly discarded',()=>{
   const index={categories:[{nb:'0',ar_title:'All',langArray:[{langNb:'ja-jp',lang_ar_title:'Japanese'}]}],groups:[{groupsID:'featured:new',title:'Featured',hasPagination:1}],collections:[{id:'set-A',title:'Collection'}],collectionItems:{'set-A':[{groupsID:'group-special',title:'Group'}]}};
-  const defs=catalogDefinitions(index,opts);assert(defs.some(d=>d.category==='0'&&d.lang==='ja-jp'));assert(defs.some(d=>d.nativeId==='featured:new'));assert(defs.some(d=>d.nativeId==='set-A'));
+  const defs=catalogDefinitions(index,opts);assert(defs.some(d=>d.category==='0'&&!d.lang));assert(catalogDefinitions(index,opts,{includeLanguageVariants:true}).some(d=>d.category==='0'&&d.lang==='ja-jp'));assert(defs.some(d=>d.nativeId==='featured:new'));assert(defs.some(d=>d.nativeId==='set-A'));
 });
 test('failed discovery never publishes a fake two-catalog complete manifest',async t=>{
   const config=await fixture(t),api=new FakeApi();api.home=async()=>{throw Object.assign(Error('offline'),{code:'UPSTREAM_NETWORK'});};

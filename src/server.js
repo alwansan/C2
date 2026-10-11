@@ -31,7 +31,7 @@ export function createServer(config, {addon,log=()=>{}}={}) {
       assert(req.method==='GET'||req.method==='HEAD','METHOD','Only GET supported',405);
       assert((req.url||'').length<=4096,'URL','Request URL too long',414);
       const url=new URL(req.url,'http://localhost');let pathname=url.pathname;
-      if(pathname==='/health.json') {send(200,{service:'cinemana-addon',version:'0.1.0',...addon.discovery.status});return;}
+      if(pathname==='/health.json') {send(200,{service:'cinemana-addon',version:'0.1.1',...addon.discovery.status});return;}
       let prefix='';
       if(config.accessKey) {
         const match=/^\/k\/([^/]+)(\/.*|$)/.exec(pathname);
@@ -53,7 +53,7 @@ export function createServer(config, {addon,log=()=>{}}={}) {
       }
       if(pathname==='/diagnostics.json') {
         // Never includes secrets or complete request/media URLs.
-        send(200,{version:'0.1.0',discovery:addon.discovery.status,options:opts,apiHost:new URL(config.apiBase).hostname,apiAuthorizationConfigured:Boolean(config.authorization),pagination:'browse: 100 output items; search: all results; native starts at 0 and scans until empty; retryable budget',limitations:['network reachability required','client owns playback/downloading','unknown dates use marked epoch placeholder']});return;
+        send(200,{version:'0.1.1',discovery:addon.discovery.status,options:opts,apiHost:new URL(config.apiBase).hostname,apiAuthorizationConfigured:Boolean(config.authorization),pagination:'browse: 100 output items; search: all results; native starts at 0 and scans until empty; retryable budget',limitations:['network reachability required','client owns playback/downloading','unknown dates use marked epoch placeholder']});return;
       }
       const native=/^\/native\/(index|details|episodes|transcodes|comments|staff)(?:\/([^/]+))?\.json$/.exec(pathname);
       if(native) {resource='native';send(200,await addon.native(native[1],native[2]?decodeURIComponent(native[2]):undefined,opts));return;}

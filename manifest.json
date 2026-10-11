@@ -1,6 +1,6 @@
 {
   "id": "org.alwan.cinemana",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "سينمانا • Cinemana",
   "description": "Bootstrap descriptor only. Install the running service /manifest.json to discover all live Cinemana sections.",
   "logo": "http://127.0.0.1:7000/logo.png",
@@ -368,6 +368,9 @@
     }
   ],
   "cinemana": {
+    "catalogLayout": "category-with-language-filter",
+    "catalogCount": 8,
+    "mergedLanguageCatalogs": 0,
     "discoveryComplete": false,
     "discoverySource": "bootstrap",
     "categories": 0,

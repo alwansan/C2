@@ -23,7 +23,7 @@ export async function mapLimit(items, count, operation) {
     while(next<items.length){const index=next++;results[index]=await operation(items[index],index);}
   }));return results;
 }
-export function catalogDefinitions(index, opts) {
+export function catalogDefinitions(index, opts, {includeLanguageVariants=false}={}) {
   const descriptors=[];
   const add=(source,id,label,extra={})=> { for(const type of TYPES) descriptors.push({source,id:`${id}-${type}`,type,name:`سينمانا • ${label} • ${opts.language==='ar'?(type==='movie'?'أفلام':'مسلسلات'):type}`, ...extra}); };
   add('all','cinemana-all',opts.language==='ar'?'كل الأعمال':'All titles');
@@ -34,7 +34,9 @@ export function catalogDefinitions(index, opts) {
     if(!valid(category.nb)) continue;
     const name=localized(category,'title',opts.language) || `Category ${category.nb}`;
     add('category',`cinemana-category-${slug(category.nb)}`,name,{category:text(category.nb)});
-    for(const lang of array(category.langArray)) if(valid(lang.langNb)) {
+    // Language variants share the native category. Advertise the unfiltered
+    // category once; retain the old routes only for installed clients/bookmarks.
+    for(const lang of includeLanguageVariants?array(category.langArray):[]) if(valid(lang.langNb)) {
       add('category',`cinemana-category-${slug(category.nb)}-language-${slug(lang.langNb)}`,`${name} • ${text(lang[opts.language==='ar'?'lang_ar_title':'lang_en_title']) || lang.langNb}`,{category:text(category.nb),lang:text(lang.langNb)});
     }
   }
