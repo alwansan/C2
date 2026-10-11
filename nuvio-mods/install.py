@@ -31,6 +31,7 @@ def prepare(root, kit, package):
    except UnicodeError:raise ValueError('Modified binary cannot be merged: '+item['path'])
    for h in item['hunks']:
     old,new=h['old'],h['new']
+    if package!='com.nuvio.cinemana' and item['path']=='androidApp/build.gradle.kts':new=new.replace('com.nuvio.cinemana',package)
     if result.count(old)==1:result=result.replace(old,new,1)
     elif result.count(new)==1:continue
     else:raise ValueError('Upstream changed a required anchor: '+item['path']+'\nNo files have been modified. Review compatibility before applying.')
