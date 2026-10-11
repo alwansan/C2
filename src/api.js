@@ -54,7 +54,7 @@ export class CinemanaApi {
   transcodes(id) { return this.get(`transcoddedFiles/id/${nativeId(id)}`); }
   group(id, level, page, count = 12) { return this.get('videoListPagination',{groupID:nativeRef(id),level,page,itemsPerPage:count}); }
   catalog({ type, category, lang, sort, page, level }) { return this.get('video/V/2', {categoryNb:category,videoKind:type==='movie'?'1':'2',langNb:lang,sortParam:sort,itemsPerPage:30,pageNumber:page,level}); }
-  search({ type, query, staff, year, category, rating, page, level }) { return this.get('AdvancedSearch',{videoTitle:query,staffTitle:staff,type:type==='movie'?'movies':'series',year,category_id:category,star:rating,page,level}); }
+  search({ type, query, staff, year, category, rating, page, level }) { return this.get('AdvancedSearch',{videoTitle:query,staffTitle:staff,type:type==='movie'?'movies':'series',year,category_id:category,star:Number(rating)>0?rating:undefined,page,level}); }
   staff(id, level) { return this.get(`staff/actorID/${nativeId(id)}/level/${level}`); }
   comments(id) { return this.get(`videoComment/id/${nativeId(id)}`); }
 }
