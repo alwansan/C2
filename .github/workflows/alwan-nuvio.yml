@@ -16,6 +16,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
       - name: Fetch exact clean Nuvio source
         run: |
           git clone --filter=blob:none https://github.com/NuvioMedia/NuvioMobile.git nuvio
@@ -36,12 +38,13 @@ jobs:
       - name: Launch and real uninstall/restore smoke tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: 30
           arch: x86_64
-          profile: pixel_2
+          profile: Nexus One
           disable-animations: true
-          ram-size: 1536M
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          ram-size: 1024M
+          cores: 2
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none
           script: |
             adb install -r nuvio/androidApp/build/outputs/apk/full/debug/androidApp-full-debug.apk
             adb install -r nuvio/androidApp/build/outputs/apk/androidTest/full/debug/androidApp-full-debug-androidTest.apk
@@ -63,6 +66,7 @@ jobs:
           name: AlwanCinema-clean-0.5.9
           path: |
             nuvio/androidApp/build/outputs/apk/full/debug/*.apk
+            nuvio/androidApp/build/outputs/apk/androidTest/full/debug/*.apk
             nuvio/composeApp/build/reports/
             *-test.txt
             crash-log.txt
