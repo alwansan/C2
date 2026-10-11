@@ -12,13 +12,39 @@ def safe(root, name):
  if dest.is_symlink():raise ValueError('Refusing symlink: '+name)
  return dest
 
+
+def known_preferences(root):
+ names={'nuvio_profile_cache','nuvio_auth','nuvio_addons','alwan_layout'}
+ for source in (root/'composeApp/src').rglob('*.kt'):
+  text=source.read_text()
+  constants=dict(re.findall(r'\b(?:const\s+)?val\s+(\w+)\s*=\s*"([^"\n]+)"',text))
+  for literal,key in re.findall(r'getSharedPreferences\(\s*(?:"([^"\n]+)"|([A-Za-z_]\w*))',text):
+   name=literal or constants.get(key,'')
+   if re.fullmatch(r'[A-Za-z0-9_.-]+',name):names.add(name)
+ return sorted(names)
+
 def prepare(root, kit, package):
  spec=json.loads((kit/'patches.json').read_text() if (kit/'patches.json').exists() else gzip.decompress((kit/'patches.json.gz').read_bytes()).decode())
  if not (root/'composeApp/build.gradle.kts').is_file():raise ValueError('Choose the Nuvio source root containing composeApp and androidApp')
+ names=known_preferences(root)
+ names_path='composeApp/src/androidMain/kotlin/com/nuvio/app/core/storage/KnownSharedPreferences.kt'
+ names_content=('package com.nuvio.app.core.storage\ninternal object KnownSharedPreferences { val names = listOf('+','.join(json.dumps(n) for n in names)+') }\n').encode()
+ spec['files'].append({'path':names_path,'old':None,'new':base64.b64encode(names_content).decode(),'hunks':[]})
  changes=[]
  for item in spec['files']:
   path=safe(root,item['path']);current=path.read_bytes() if path.exists() else None
   payload=base64.b64decode(item['new'])
+  if item['path'].endswith('/core/storage/AlwanStorage.kt'):
+   anchor=b'            val prefs=File(context.applicationInfo.dataDir,"shared_prefs")'
+   replacement=b'''            KnownSharedPreferences.names.forEach { name ->
+                if(name !in observed) {
+                    val p=context.getSharedPreferences(name,Context.MODE_PRIVATE)
+                    p.registerOnSharedPreferenceChangeListener(listener);observed[name]=p
+                }
+            }
+            val prefs=File(context.applicationInfo.dataDir,"shared_prefs")'''
+   if payload.count(anchor)!=1:raise ValueError('Storage snapshot anchor changed')
+   payload=payload.replace(anchor,replacement)
   if package!='com.nuvio.cinemana' and item['path']=='androidApp/build.gradle.kts':payload=payload.replace(b'com.nuvio.cinemana',package.encode())
   if current==payload:continue
   if item['old'] is None:
