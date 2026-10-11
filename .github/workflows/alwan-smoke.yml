@@ -1,0 +1,62 @@
+name: Clean APK independent runtime smoke
+on:
+  push:
+    branches: [alwan-clean-nuvio]
+    paths: ['.github/workflows/alwan-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: AlwanCinema-clean-0.5.9
+          run-id: 38154339210
+          github-token: ${{ github.token }}
+          path: artifact
+      - name: Prepare smoke script
+        run: |
+          cat > smoke.sh <<'SH'
+          set -eu
+          adb logcat -c
+          adb logcat -v threadtime > runtime-log.txt 2>&1 &
+          logger=$!
+          trap 'kill "$logger" || true' EXIT
+          apk=$(find artifact -name '*full-debug.apk' -print -quit)
+          adb install -r "$apk"
+          adb shell appops set com.nuvio.cinemana MANAGE_EXTERNAL_STORAGE allow
+          adb shell am start -W -n com.nuvio.cinemana/com.nuvio.app.launcher.AppIconDefault
+          sleep 15
+          adb shell pidof com.nuvio.cinemana
+          adb logcat -d -b crash > crash-log.txt
+          if grep -q 'FATAL EXCEPTION' crash-log.txt; then cat crash-log.txt; exit 1; fi
+          echo 'Real clean APK installed and main activity remained running.'
+          SH
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          profile: Nexus One
+          ram-size: 1024M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: bash smoke.sh
+      - name: Capture host diagnostics
+        if: always()
+        run: sudo dmesg | tail -100 > host-kernel.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Alwan-clean-runtime-diagnostics
+          path: |
+            runtime-log.txt
+            crash-log.txt
+            host-kernel.txt
