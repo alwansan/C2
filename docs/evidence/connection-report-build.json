@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T11:49:25.339Z",
+  "apiHost": "cinemana.shabakaty.cc",
+  "authorizationConfigured": false,
+  "checks": [
+    {
+      "name": "categories",
+      "ok": false,
+      "code": "UPSTREAM_NETWORK",
+      "message": "Cannot reach Cinemana from this server network"
+    },
+    {
+      "name": "groups",
+      "ok": false,
+      "code": "UPSTREAM_NETWORK",
+      "message": "Cannot reach Cinemana from this server network"
+    },
+    {
+      "name": "collections",
+      "ok": false,
+      "code": "UPSTREAM_NETWORK",
+      "message": "Cannot reach Cinemana from this server network"
+    }
+  ],
+  "liveVerified": false
+}

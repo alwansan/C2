@@ -1,0 +1,805 @@
+{
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$SkippingDurationsApi.smali": {
+    "sha256": "911774060008c3af5c29f2c81eb774e179fa82fc37d3fb9fc5c0990bb44b9e3b",
+    "fields": [
+      {
+        "json": "end",
+        "field": ".field public end:Ljava/util/List;"
+      },
+      {
+        "json": "start",
+        "field": ".field public start:Ljava/util/List;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$CategoryApi.smali": {
+    "sha256": "2dc78c5da78bb01d2bea6a91899b4a9b4204395fbb17176707ea293515ef521c",
+    "fields": [
+      {
+        "json": "ar_title",
+        "field": ".field public arTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "en_title",
+        "field": ".field public enTitle:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$VideoLanguagesApi.smali": {
+    "sha256": "2c3c3695477dd68e43077552666d02b9c8c23ec0d945e7cdf4d3b556151e3335",
+    "fields": [
+      {
+        "json": "ar_title",
+        "field": ".field public arTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "en_title",
+        "field": ".field public enTitle:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/RecommendationsApi.smali": {
+    "sha256": "79ead5ab106a4c7b70da65bb6949ce6370a1a0be1366ea6f5a7d929a3840a5a7",
+    "fields": [
+      {
+        "json": "expirationDate",
+        "field": ".field public expirationDate:Ljava/lang/String;"
+      },
+      {
+        "json": "movieId",
+        "field": ".field public movieId:I"
+      },
+      {
+        "json": "movieName",
+        "field": ".field public movieName:Ljava/lang/String;"
+      },
+      {
+        "json": "recommendations",
+        "field": ".field public recommendations:Ljava/util/List;"
+      },
+      {
+        "json": "temp",
+        "field": ".field public temp:Z"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/AvailableYearsApi.smali": {
+    "sha256": "1a85dcdca33924850e5c9e50995b160f37ff4a6fa5eb4c7019dc4360412658c9",
+    "fields": [
+      {
+        "json": "caption",
+        "field": ".field public caption:Ljava/lang/String;"
+      },
+      {
+        "json": "value",
+        "field": ".field public value:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/StatusApi$StatusComponentApi.smali": {
+    "sha256": "45adc40b01bb347b726bcd95969cb738287ddfbeb4509fe91bec231b468079a3",
+    "fields": [
+      {
+        "json": "components",
+        "field": ".field public components:Ljava/util/List;"
+      },
+      {
+        "json": "created_at",
+        "field": ".field public createdAt:Ljava/lang/String;"
+      },
+      {
+        "json": "description",
+        "field": ".field public description:Ljava/lang/String;"
+      },
+      {
+        "json": "group",
+        "field": ".field public group:Z"
+      },
+      {
+        "json": "group_id",
+        "field": ".field public groupId:Ljava/lang/String;"
+      },
+      {
+        "json": "id",
+        "field": ".field public id:Ljava/lang/String;"
+      },
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "only_show_if_degraded",
+        "field": ".field public onlyShowIfDegraded:Z"
+      },
+      {
+        "json": "page_id",
+        "field": ".field public pageId:Ljava/lang/String;"
+      },
+      {
+        "json": "position",
+        "field": ".field public position:I"
+      },
+      {
+        "json": "showcase",
+        "field": ".field public showcase:Z"
+      },
+      {
+        "json": "start_date",
+        "field": ".field public startDate:Ljava/lang/String;"
+      },
+      {
+        "json": "status",
+        "field": ".field public status:Ljava/lang/String;"
+      },
+      {
+        "json": "updated_at",
+        "field": ".field public updatedAt:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/StatusApi$StatusPageApi.smali": {
+    "sha256": "5dd608594a65def91724e8717ec84a8d7c69adedab92e6f03b9e3b5472b771ce",
+    "fields": [
+      {
+        "json": "id",
+        "field": ".field public id:Ljava/lang/String;"
+      },
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "time_zone",
+        "field": ".field public timeZone:Ljava/lang/String;"
+      },
+      {
+        "json": "updated_at",
+        "field": ".field public updatedAt:Ljava/lang/String;"
+      },
+      {
+        "json": "url",
+        "field": ".field public url:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/StatusApi.smali": {
+    "sha256": "4989389b2001c37fc4c773767ee78b8e5a171d9fc38e07d40c8aef5e00cdbd25",
+    "fields": [
+      {
+        "json": "components",
+        "field": ".field public components:Ljava/util/List;"
+      },
+      {
+        "json": "page",
+        "field": ".field public page:Lcom/shabakaty/cinemana/domain/models/remote/StatusApi$StatusPageApi;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$StaffsInfoApi.smali": {
+    "sha256": "43fae2e63fa02102696097671483f800bb6037acbe514cddc5c8644139086470",
+    "fields": [
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "nb",
+        "field": ".field public nb:Ljava/lang/String;"
+      },
+      {
+        "json": "role",
+        "field": ".field public role:Ljava/lang/String;"
+      },
+      {
+        "json": "staff_img",
+        "field": ".field public staffImg:Ljava/lang/String;"
+      },
+      {
+        "json": "staff_img_medium_thumb",
+        "field": ".field public staffImgMediumThumb:Ljava/lang/String;"
+      },
+      {
+        "json": "staff_img_thumb",
+        "field": ".field public staffImgThumb:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/RecommendationsRequest.smali": {
+    "sha256": "bef8f0e59bf9fd9c0fd94b9f41495e5a3dbe0f15bdac97445b4a50a5252e1549",
+    "fields": [
+      {
+        "json": "MovieId",
+        "field": ".field public movieId:Ljava/lang/String;"
+      },
+      {
+        "json": "MovieName",
+        "field": ".field public movieName:Ljava/lang/String;"
+      },
+      {
+        "json": "ReProcessIfExpired",
+        "field": ".field public reprocessIfExpired:Z"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi.smali": {
+    "sha256": "606f9084ad8c9f8bbd20ce9b48b938840025f30c64a46c5fc33961a3eaed5fbf",
+    "fields": [
+      {
+        "json": "actorsInfo",
+        "field": ".field public actorsInfo:Ljava/util/List;"
+      },
+      {
+        "json": "ar_content",
+        "field": ".field public arContent:Ljava/lang/String;"
+      },
+      {
+        "json": "ar_title",
+        "field": ".field public arTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "arTranslationFilePath",
+        "field": ".field public arTranslationFilePath:Ljava/lang/String;"
+      },
+      {
+        "json": "castable",
+        "field": ".field public castable:Ljava/lang/String;"
+      },
+      {
+        "json": "categories",
+        "field": ".field public categories:Ljava/util/List;"
+      },
+      {
+        "json": "custom_ar_title",
+        "field": ".field public customArTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "custom_en_title",
+        "field": ".field public customEnTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "directorsInfo",
+        "field": ".field public directorsInfo:Ljava/util/List;"
+      },
+      {
+        "json": "duration",
+        "field": ".field public duration:Ljava/lang/String;"
+      },
+      {
+        "json": "en_content",
+        "field": ".field public enContent:Ljava/lang/String;"
+      },
+      {
+        "json": "en_title",
+        "field": ".field public enTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "episode_flag",
+        "field": ".field public episodeFlag:Ljava/lang/String;"
+      },
+      {
+        "json": "episodeNummer",
+        "field": ".field public episodeNummer:Ljava/lang/String;"
+      },
+      {
+        "json": "filmRating",
+        "field": ".field public filmRating:Ljava/lang/String;"
+      },
+      {
+        "json": "hasIntroSkipping",
+        "field": ".field public hasIntroSkipping:Z"
+      },
+      {
+        "json": "imdbUrlRef",
+        "field": ".field public imdbUrlRef:Ljava/lang/String;"
+      },
+      {
+        "json": "imgMediumThumbObjUrl",
+        "field": ".field public imgMediumThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgObjUrl",
+        "field": ".field public imgObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgThumbObjUrl",
+        "field": ".field public imgThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "introSkipping",
+        "field": ".field public introSkipping:Ljava/util/List;"
+      },
+      {
+        "json": "isSpecial",
+        "field": ".field public isSpecial:Ljava/lang/String;"
+      },
+      {
+        "json": "itemDate",
+        "field": ".field public itemDate:Ljava/lang/String;"
+      },
+      {
+        "json": "item_order_list",
+        "field": ".field public itemOrderList:Ljava/lang/String;"
+      },
+      {
+        "json": "kind",
+        "field": ".field public kind:Ljava/lang/String;"
+      },
+      {
+        "json": "list_id",
+        "field": ".field public listId:Ljava/lang/String;"
+      },
+      {
+        "json": "list_sort_order",
+        "field": ".field public listSortOrder:Ljava/lang/String;"
+      },
+      {
+        "json": "mDate",
+        "field": ".field public mDate:Ljava/lang/String;"
+      },
+      {
+        "json": "nb",
+        "field": ".field public nb:Ljava/lang/String;"
+      },
+      {
+        "json": "parent_skipping",
+        "field": ".field public parentSkipping:Ljava/lang/String;"
+      },
+      {
+        "json": "publishDate",
+        "field": ".field public publishDate:Ljava/lang/String;"
+      },
+      {
+        "json": "rate",
+        "field": ".field public rate:Ljava/lang/String;"
+      },
+      {
+        "json": "rootSeries",
+        "field": ".field public rootSeries:Ljava/lang/String;"
+      },
+      {
+        "json": "season",
+        "field": ".field public season:Ljava/lang/String;"
+      },
+      {
+        "json": "seriesRating",
+        "field": ".field public seriesRating:Ljava/lang/String;"
+      },
+      {
+        "json": "showComments",
+        "field": ".field public showComments:Z"
+      },
+      {
+        "json": "skippingDurations",
+        "field": ".field public skippingDurations:Lcom/shabakaty/cinemana/domain/models/remote/VideoModelApi$SkippingDurationsApi;"
+      },
+      {
+        "json": "stars",
+        "field": ".field public stars:Ljava/lang/String;"
+      },
+      {
+        "json": "trailer",
+        "field": ".field public trailer:Ljava/lang/String;"
+      },
+      {
+        "json": "translations",
+        "field": ".field public translations:Ljava/util/List;"
+      },
+      {
+        "json": "useParentImg",
+        "field": ".field public useParentImg:Ljava/lang/String;"
+      },
+      {
+        "json": "videoCommentsNumber",
+        "field": ".field public videoCommentsNumber:I"
+      },
+      {
+        "json": "videoDisLikesNumber",
+        "field": ".field public videoDisLikesNumber:Ljava/lang/String;"
+      },
+      {
+        "json": "videoLanguages",
+        "field": ".field public videoLanguages:Lcom/shabakaty/cinemana/domain/models/remote/VideoModelApi$VideoLanguagesApi;"
+      },
+      {
+        "json": "videoLikesNumber",
+        "field": ".field public videoLikesNumber:Ljava/lang/String;"
+      },
+      {
+        "json": "videoViewsNumber",
+        "field": ".field public videoViewsNumber:Ljava/lang/String;"
+      },
+      {
+        "json": "writersInfo",
+        "field": ".field public writersInfo:Ljava/util/List;"
+      },
+      {
+        "json": "year",
+        "field": ".field public year:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/TranscodeFileApi.smali": {
+    "sha256": "e0bb04ca17dfb0a06a118fc89beecafc24772b2b81a7fcab5516b323bdc8edb5",
+    "fields": [
+      {
+        "json": "container",
+        "field": ".field public container:Ljava/lang/String;"
+      },
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "resolution",
+        "field": ".field public resolution:Ljava/lang/String;"
+      },
+      {
+        "json": "transcoddedFileName",
+        "field": ".field public transcoddedFileName:Ljava/lang/String;"
+      },
+      {
+        "json": "videoUrl",
+        "field": ".field public videoUrl:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$a.smali": {
+    "sha256": "c32523876964fe2913039cfb87d07654fde002bf3449473de92c2d80957cc1e4",
+    "fields": [
+      {
+        "json": "id",
+        "field": ".field public a:I"
+      },
+      {
+        "json": "name",
+        "field": ".field public b:Ljava/lang/String;"
+      },
+      {
+        "json": "type",
+        "field": ".field public c:Ljava/lang/String;"
+      },
+      {
+        "json": "extention",
+        "field": ".field public d:Ljava/lang/String;"
+      },
+      {
+        "json": "file",
+        "field": ".field public e:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/VideoModelApi$IntroSkippingApi.smali": {
+    "sha256": "fb635977a9fca65f346b9ff9b1e161e593ed91a164e6f14515bf8406a5c1b071",
+    "fields": [
+      {
+        "json": "control_level",
+        "field": ".field public controlLevel:Ljava/lang/String;"
+      },
+      {
+        "json": "end",
+        "field": ".field public end:Ljava/lang/String;"
+      },
+      {
+        "json": "start",
+        "field": ".field public start:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/NotificationsListApi.smali": {
+    "sha256": "957c5bfe06e9d3c4805a96a22db9cf097d4d2d0ba5536e273f3a7c51e33561dc",
+    "fields": [
+      {
+        "json": "new",
+        "field": ".field public new:Ljava/lang/String;"
+      },
+      {
+        "json": "notifications",
+        "field": ".field public notifications:Ljava/util/List;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/LogoutResponseApi.smali": {
+    "sha256": "68d5bf08ec9c48c35c29c3921848a5e75bc9c10264b7ce9df0678576fd6cf1d8",
+    "fields": [
+      {
+        "json": "dislikeNumebr",
+        "field": ".field public dislikeNumber:Ljava/lang/String;"
+      },
+      {
+        "json": "likeNumber",
+        "field": ".field public likeNumber:Ljava/lang/String;"
+      },
+      {
+        "json": "status",
+        "field": ".field public status:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/UserSettingsApi.smali": {
+    "sha256": "1b480e5cabdaf4e4a67178883cb73cb336a466f3c998c69d774a82fabe5cb43d",
+    "fields": [
+      {
+        "json": "parentalControl",
+        "field": ".field public parentalControl:Ljava/util/List;"
+      },
+      {
+        "json": "parentalLevelStatus",
+        "field": ".field public parentalLevelStatus:I"
+      },
+      {
+        "json": "userTranslation",
+        "field": ".field public userTranslation:Lcom/shabakaty/cinemana/domain/models/remote/user/UserSettingsApi$UserTranslationApi;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/UserSettingsApi$UserTranslationApi.smali": {
+    "sha256": "590823f25e573fb7cfcbb2b61ecfe11b600def5a9a7e12ff6b25cb6c037d8d34",
+    "fields": [
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "status",
+        "field": ".field public status:I"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/UserListApi.smali": {
+    "sha256": "471a44028db712cfd2c01d641a8beaeaeb37305f085f0599d7a531aa614e062f",
+    "fields": [
+      {
+        "json": "data",
+        "field": ".field public data:Ljava/util/List;"
+      },
+      {
+        "json": "status",
+        "field": ".field public status:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/user/UserSettingsApi$ParentalControlApi.smali": {
+    "sha256": "eb3f8d7109208ab2b1d4c68a064de707eeab0eb1bbb12740c57669f29c0a1a14",
+    "fields": [
+      {
+        "json": "ageLimit",
+        "field": ".field public ageLimit:Ljava/lang/String;"
+      },
+      {
+        "json": "filmRating",
+        "field": ".field public filmRating:Ljava/lang/String;"
+      },
+      {
+        "json": "id",
+        "field": ".field public id:Ljava/lang/String;"
+      },
+      {
+        "json": "name",
+        "field": ".field public name:Ljava/lang/String;"
+      },
+      {
+        "json": "SeriesRating",
+        "field": ".field public tvShowRating:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/categories/NewCategoryItemApi.smali": {
+    "sha256": "954bb7455443250c335e73e72eeb078066835926725b9ce56350eba7f17d1696",
+    "fields": [
+      {
+        "json": "ar_title",
+        "field": ".field public arTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "en_title",
+        "field": ".field public enTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "img",
+        "field": ".field public img:Ljava/lang/String;"
+      },
+      {
+        "json": "imgMediumThumb",
+        "field": ".field public imgMediumThumb:Ljava/lang/String;"
+      },
+      {
+        "json": "imgMediumThumbObjUrl",
+        "field": ".field public imgMediumThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgObjUrl",
+        "field": ".field public imgObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgThumb",
+        "field": ".field public imgThumb:Ljava/lang/String;"
+      },
+      {
+        "json": "imgThumbObjUrl",
+        "field": ".field public imgThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "langArray",
+        "field": ".field public langArray:Ljava/util/List;"
+      },
+      {
+        "json": "nb",
+        "field": ".field public nb:Ljava/lang/String;"
+      },
+      {
+        "json": "objectUrlExpiration",
+        "field": ".field public objectUrlExpiration:Ljava/lang/String;"
+      },
+      {
+        "json": "porder",
+        "field": ".field public porder:Ljava/lang/String;"
+      },
+      {
+        "json": "sort",
+        "field": ".field public sort:Ljava/lang/String;"
+      },
+      {
+        "json": "updateDateTime",
+        "field": ".field public updateDateTime:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/categories/NewCategoryItemApi$NewLanguageItemApi.smali": {
+    "sha256": "a232f6ca6c38a36cb2b09bcd14b308294e3277ce7b7dc41a75309ae44e4fa234",
+    "fields": [
+      {
+        "json": "catNb",
+        "field": ".field public catNb:Ljava/lang/String;"
+      },
+      {
+        "json": "lang_ar_title",
+        "field": ".field public langArTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "lang_en_title",
+        "field": ".field public langEnTitle:Ljava/lang/String;"
+      },
+      {
+        "json": "langFreq",
+        "field": ".field public langFreq:Ljava/lang/String;"
+      },
+      {
+        "json": "langNb",
+        "field": ".field public langNb:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/actor_info/StaffModelApi.smali": {
+    "sha256": "5d8a4ff02530c5fddb1b6726ca79dc3760fd699ee1acc402069eba68877eadcd",
+    "fields": [
+      {
+        "json": "imgMediumThumbObjUrl",
+        "field": ".field public imgMediumThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgObjUrl",
+        "field": ".field public imgObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgThumbObjUrl",
+        "field": ".field public imgThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "items",
+        "field": ".field public items:Ljava/util/List;"
+      },
+      {
+        "json": "role",
+        "field": ".field public role:Ljava/lang/String;"
+      },
+      {
+        "json": "title",
+        "field": ".field public title:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/home_page/VideosGroupApi.smali": {
+    "sha256": "b98d217d8f6caae4c9e76b8203ddfbfe75bb367c3e5d9843c4f1cc8fd0665ebd",
+    "fields": [
+      {
+        "json": "groupsID",
+        "field": ".field public groupsID:Ljava/lang/String;"
+      },
+      {
+        "json": "hasPagination",
+        "field": ".field public hasPagination:I"
+      },
+      {
+        "json": "title",
+        "field": ".field public title:Ljava/lang/String;"
+      },
+      {
+        "json": "content",
+        "field": ".field public videosList:Ljava/util/List;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/home_page/AdApi.smali": {
+    "sha256": "5fd3ac4f2415688f0eff51d058a0ae226bb88004c33a8e20e7f5f17758e79936",
+    "fields": [
+      {
+        "json": "beacon",
+        "field": ".field private beaconUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "description",
+        "field": ".field private description:Ljava/lang/String;"
+      },
+      {
+        "json": "id",
+        "field": ".field private id:Ljava/lang/String;"
+      },
+      {
+        "json": "creative",
+        "field": ".field private imgMobileUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "img_url",
+        "field": ".field private imgUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "click",
+        "field": ".field private linkUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "success",
+        "field": ".field private success:Z"
+      },
+      {
+        "json": "type",
+        "field": ".field private type:Ljava/lang/String;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/home_page/HomeGroupsApi.smali": {
+    "sha256": "2d7584d21166b7f5983fa0ac92fd4691dd66bc909d39e4bc655de4b52c3bb25c",
+    "fields": [
+      {
+        "json": "groups",
+        "field": ".field public groups:Ljava/util/List;"
+      }
+    ]
+  },
+  "com/shabakaty/cinemana/domain/models/remote/home_page/CollectionItemApi.smali": {
+    "sha256": "5df21bde0becfc36757459a9b6b8e0b969e531958c38cc095326f777c1bc7016",
+    "fields": [
+      {
+        "json": "content",
+        "field": ".field public content:Ljava/util/List;"
+      },
+      {
+        "json": "display_name",
+        "field": ".field public displayName:Ljava/lang/String;"
+      },
+      {
+        "json": "groupsID",
+        "field": ".field public groupsID:Ljava/lang/String;"
+      },
+      {
+        "json": "id",
+        "field": ".field public id:Ljava/lang/String;"
+      },
+      {
+        "json": "imgMediumThumbObjUrl",
+        "field": ".field public imgMediumThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgObjUrl",
+        "field": ".field public imgObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "imgThumbObjUrl",
+        "field": ".field public imgThumbObjUrl:Ljava/lang/String;"
+      },
+      {
+        "json": "title",
+        "field": ".field public title:Ljava/lang/String;"
+      }
+    ]
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "id": "org.alwan.cinemana",
+  "version": "0.1.0",
+  "name": "سينمانا • Cinemana",
+  "description": "Bootstrap descriptor only. Install the running service /manifest.json to discover all live Cinemana sections.",
+  "logo": "http://127.0.0.1:7000/logo.png",
+  "types": [
+    "movie",
+    "series"
+  ],
+  "idPrefixes": [
+    "alwan.cinemana:"
+  ],
+  "resources": [
+    "catalog",
+    {
+      "name": "meta",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "idPrefixes": [
+        "alwan.cinemana:"
+      ]
+    },
+    {
+      "name": "stream",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "idPrefixes": [
+        "alwan.cinemana:"
+      ]
+    },
+    {
+      "name": "subtitles",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "idPrefixes": [
+        "alwan.cinemana:"
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "cinemana-all-movie",
+      "type": "movie",
+      "name": "سينمانا • كل الأعمال • أفلام",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        },
+        {
+          "name": "genre",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "language",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "year",
+          "isRequired": false
+        },
+        {
+          "name": "rating",
+          "isRequired": false,
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "optionsLimit": 1
+        },
+        {
+          "name": "staff",
+          "isRequired": false
+        },
+        {
+          "name": "sort",
+          "isRequired": false,
+          "options": [
+            "الإضافة: الأحدث",
+            "الإضافة: الأقدم",
+            "الإصدار: الأحدث",
+            "الإصدار: الأقدم",
+            "الاسم الإنجليزي: أ–ي",
+            "الاسم الإنجليزي: ي–أ",
+            "الاسم العربي: أ–ي",
+            "الاسم العربي: ي–أ",
+            "المشاهدات: الأعلى",
+            "المشاهدات: الأقل",
+            "تقييم المستخدمين: الأعلى",
+            "تقييم المستخدمين: الأقل",
+            "IMDb: الأعلى",
+            "IMDb: الأقل"
+          ],
+          "optionsLimit": 1
+        }
+      ]
+    },
+    {
+      "id": "cinemana-all-series",
+      "type": "series",
+      "name": "سينمانا • كل الأعمال • مسلسلات",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        },
+        {
+          "name": "genre",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "language",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "year",
+          "isRequired": false
+        },
+        {
+          "name": "rating",
+          "isRequired": false,
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "optionsLimit": 1
+        },
+        {
+          "name": "staff",
+          "isRequired": false
+        },
+        {
+          "name": "sort",
+          "isRequired": false,
+          "options": [
+            "الإضافة: الأحدث",
+            "الإضافة: الأقدم",
+            "الإصدار: الأحدث",
+            "الإصدار: الأقدم",
+            "الاسم الإنجليزي: أ–ي",
+            "الاسم الإنجليزي: ي–أ",
+            "الاسم العربي: أ–ي",
+            "الاسم العربي: ي–أ",
+            "المشاهدات: الأعلى",
+            "المشاهدات: الأقل",
+            "تقييم المستخدمين: الأعلى",
+            "تقييم المستخدمين: الأقل",
+            "IMDb: الأعلى",
+            "IMDb: الأقل"
+          ],
+          "optionsLimit": 1
+        }
+      ]
+    },
+    {
+      "id": "cinemana-search-movie",
+      "type": "movie",
+      "name": "سينمانا • البحث الشامل • أفلام",
+      "extra": [
+        {
+          "name": "search",
+          "isRequired": true
+        },
+        {
+          "name": "genre",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "language",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "year",
+          "isRequired": false
+        },
+        {
+          "name": "rating",
+          "isRequired": false,
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "optionsLimit": 1
+        },
+        {
+          "name": "staff",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": "cinemana-search-series",
+      "type": "series",
+      "name": "سينمانا • البحث الشامل • مسلسلات",
+      "extra": [
+        {
+          "name": "search",
+          "isRequired": true
+        },
+        {
+          "name": "genre",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "language",
+          "isRequired": false,
+          "options": [],
+          "optionsLimit": 1
+        },
+        {
+          "name": "year",
+          "isRequired": false
+        },
+        {
+          "name": "rating",
+          "isRequired": false,
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "optionsLimit": 1
+        },
+        {
+          "name": "staff",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": "cinemana-banner-movie",
+      "type": "movie",
+      "name": "سينمانا • العروض الرئيسية • أفلام",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": "cinemana-banner-series",
+      "type": "series",
+      "name": "سينمانا • العروض الرئيسية • مسلسلات",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": "cinemana-new-movie",
+      "type": "movie",
+      "name": "سينمانا • المضاف حديثًا • أفلام",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": "cinemana-new-series",
+      "type": "series",
+      "name": "سينمانا • المضاف حديثًا • مسلسلات",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
+    }
+  ],
+  "behaviorHints": {
+    "configurable": true,
+    "configurationRequired": false,
+    "p2p": false
+  },
+  "config": [
+    {
+      "key": "language",
+      "type": "select",
+      "title": "لغة المعلومات",
+      "options": [
+        "ar",
+        "en"
+      ],
+      "default": "ar"
+    },
+    {
+      "key": "subtitleMode",
+      "type": "select",
+      "title": "تسمية الترجمات: labels لـ Nuvio أو iso للعملاء القياسيين",
+      "options": [
+        "labels",
+        "iso"
+      ],
+      "default": "labels"
+    },
+    {
+      "key": "quality",
+      "type": "select",
+      "title": "الجودة المفضلة أولًا، دون إخفاء بقية الجودات",
+      "options": [
+        "all",
+        "144",
+        "240",
+        "360",
+        "480",
+        "720",
+        "1080",
+        "2160"
+      ],
+      "default": "all"
+    }
+  ],
+  "cinemana": {
+    "discoveryComplete": false,
+    "discoverySource": "bootstrap",
+    "categories": 0,
+    "groups": 0,
+    "collections": 0
+  }
+}

@@ -1,0 +1,14 @@
+services:
+  cinemana:
+    build: .
+    ports:
+      - "127.0.0.1:7000:7000"
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      DATA_DIR: /app/data
+    volumes:
+      - cinemana-data:/app/data
+    restart: unless-stopped
+volumes:
+  cinemana-data:

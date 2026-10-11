@@ -1,0 +1,13 @@
+import { writeFile } from 'node:fs/promises';
+import { readConfig, options } from '../src/config.js';
+import { CinemanaApi } from '../src/api.js';
+import { CinemanaAddon } from '../src/addon.js';
+import { buildManifest } from '../src/manifest.js';
+const config=readConfig();const opts=options();
+const bootstrap=process.argv.includes('--bootstrap');
+const target=process.argv.find(arg=>arg.startsWith('--output='))?.slice(9)||'manifest.json';
+let manifest;
+if(bootstrap) manifest=buildManifest({categories:[],groups:[],collections:[],collectionItems:{},source:'bootstrap'},opts,config.publicUrl,true);
+else manifest=await new CinemanaAddon(new CinemanaApi(config),config).manifest(opts,config.publicUrl);
+await writeFile(target,JSON.stringify(manifest,null,2)+'\n');
+console.log(`Wrote ${manifest.catalogs.length} catalogs to ${target}; discoveryComplete=${manifest.cinemana.discoveryComplete}`);

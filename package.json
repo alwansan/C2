@@ -1,0 +1,17 @@
+{
+  "name": "alwan-cinemana-addon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent Cinemana provider for the Stremio HTTP addon protocol",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "test": "node --test test/*.test.js",
+    "inspect": "node --env-file-if-exists=.env tools/inspect.js",
+    "manifest": "node --env-file-if-exists=.env tools/export-manifest.js",
+    "capture": "node --env-file-if-exists=.env tools/capture.js"
+  }
+}

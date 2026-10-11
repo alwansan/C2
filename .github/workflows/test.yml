@@ -1,0 +1,37 @@
+name: Addon tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  protocol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm test
+      - run: node tools/export-manifest.js --bootstrap --output=/tmp/manifest-bootstrap.json
+  connection:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm run inspect
+        env:
+          REQUEST_TIMEOUT_MS: 4000
+      - run: npm run manifest -- --output=data/manifest-live.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cinemana-network-report
+          path: |
+            data/connection-report.json
+            data/manifest-live.json

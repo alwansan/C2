@@ -1,0 +1,1002 @@
+{
+  "baseline": "PATCH205 supplied source",
+  "sha256": "ca7d9399ef2ff3192ca08582a50d1f0444b97d4b96b608e952f26303deb083d1",
+  "endpoints": [
+    {
+      "method": ".method public abstract A(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "allVideoInfo/id/{videoNb}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "videoNb"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract B(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "logout/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "deviceId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract C(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "addLike/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "likeValue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract D(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "categories",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "commentSpam/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "userID"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoID"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "commentID"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract F(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "getCollection/collectionID/{id}/level/{parentalLevel}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "parentalLevel"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract G(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "AdvancedSearch",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "videoTitle"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "staffTitle"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "type"
+            }
+          ]
+        },
+        {
+          "argument": ".param p4    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": null
+            }
+          ]
+        },
+        {
+          "argument": ".param p5    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "category_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p6    # Ljava/lang/Integer;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "star"
+            }
+          ]
+        },
+        {
+          "argument": ".param p7    # I",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "page"
+            }
+          ]
+        },
+        {
+          "argument": ".param p8    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract H(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "collectionsId/level/{parentalLevel}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "parentalLevel"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract I(Ljava/lang/String;Lcom/shabakaty/downloader/ud0;)Ljava/lang/Object;",
+      "verb": "GET",
+      "path": "userSettings/lang/{language}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "language"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract a(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "memberCheckVideoStatus/id/{videoNb}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "videoNb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract b(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/qf1;",
+      "verb": "GET",
+      "path": "videoSeason/id/{rootEpisodeId}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "rootEpisodeId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract c(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "banner/level/{parentalLevel}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "parentalLevel"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "removeFromHistory/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "kind"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "history/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "pageNumber"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "kind"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract f(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "addComment/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "comment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract g(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "newlyVideosItems/level/{parentalLevel}/offset/12/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "parentalLevel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract getComments(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "videoComment/id/{videoNb}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "videoNb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract h(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "videoGroups/lang/{language}/level/{parentalLevel}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "language"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "parentalLevel"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract i()Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "commentRules",
+      "parameters": []
+    },
+    {
+      "method": ".method public abstract j(Ljava/lang/String;Lcom/shabakaty/downloader/ud0;)Ljava/lang/Object;",
+      "verb": "POST",
+      "path": "changeParentalLevel",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "parentalLevel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract k()Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "https://6b1m6vnfz2jk.statuspage.io/api/v2/components.json",
+      "parameters": []
+    },
+    {
+      "method": ".method public abstract l(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "highlightEpisode/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoID"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract m(Ljava/lang/String;Lcom/shabakaty/downloader/ud0;)Ljava/lang/Object;",
+      "verb": "POST",
+      "path": "UserTranslationSettings",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "enableNonTranslation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract n(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "video/V/2",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "categoryNb"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "videoKind"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "langNb"
+            }
+          ]
+        },
+        {
+          "argument": ".param p4    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "itemsPerPage"
+            }
+          ]
+        },
+        {
+          "argument": ".param p5    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "pageNumber"
+            }
+          ]
+        },
+        {
+          "argument": ".param p6    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "level"
+            }
+          ]
+        },
+        {
+          "argument": ".param p7    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "sortParam"
+            }
+          ]
+        },
+        {
+          "argument": ".param p8    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract o(Lcom/shabakaty/cinemana/domain/models/remote/RecommendationsRequest;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": null,
+      "parameters": [
+        {
+          "argument": ".param p1    # Lcom/shabakaty/cinemana/domain/models/remote/RecommendationsRequest;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/sm",
+              "value": null
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ax4",
+              "value": null
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract p()Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "get_subscriptions",
+      "parameters": []
+    },
+    {
+      "method": ".method public abstract q(Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "get_notifications",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "count"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract r(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "updateComment/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "commentId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p4    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "comment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract s(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "login/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "deviceId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "deviceName"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "playerId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract t(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "addToHistory/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "kind"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract u(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "videoListPagination",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "groupID"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "level"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "itemsPerPage"
+            }
+          ]
+        },
+        {
+          "argument": ".param p4    # I",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/ok3",
+              "value": "page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract v(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "add_subscriptions/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "video_id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract w(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "staff/actorID/{actorID}/level/{level}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "actorID"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract x(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "removeComment/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "videoId"
+            }
+          ]
+        },
+        {
+          "argument": ".param p3    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "commentId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract y(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "POST",
+      "path": "remove_subscriptions/",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "user_id"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/la1",
+              "value": "video_id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": ".method public abstract z(Ljava/lang/String;Ljava/lang/String;)Lcom/shabakaty/downloader/f74;",
+      "verb": "GET",
+      "path": "transcoddedFiles/id/{videoNb}",
+      "parameters": [
+        {
+          "argument": ".param p1    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/va3",
+              "value": "videoNb"
+            }
+          ]
+        },
+        {
+          "argument": ".param p2    # Ljava/lang/String;",
+          "annotations": [
+            {
+              "class": "Lcom/shabakaty/downloader/os1",
+              "value": "Cache-Control"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
