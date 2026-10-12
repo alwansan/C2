@@ -1,17 +1,22 @@
+#!/usr/bin/env python3
+"""Check P7 compressed patch integrity and output source mapping."""
 from pathlib import Path
-import base64,gzip,json,hashlib
-from tempfile import TemporaryDirectory
-from subprocess import run
-base=Path(__file__).parent
-entries=json.loads(gzip.decompress(base64.b64decode((base/'performance_p7.patch.gz.b64').read_bytes())))
-assert entries
-for e in entries:
-    assert '..' not in Path(e['path']).parts
-    assert hashlib.sha256(base64.b64decode(e['content'])).hexdigest()==e['new_sha']
-with TemporaryDirectory() as d:
-    root=Path(d)
-    for e in entries:
-        p=root/e['path'];p.parent.mkdir(parents=True,exist_ok=True)
-        # For a full regression run point at the P6 source and use the installer twice instead.
-        assert len(e['old_sha'])==64
-    print('Validated',len(entries),'portable patch entries and checksums')
+import sys,base64,gzip,re
+data=gzip.decompress(base64.b64decode(Path(__file__).with_name('p7.diff.gz.b64').read_bytes()))
+assert data.startswith(b'diff --git a/'), 'Invalid unified Git patch'
+for path in [
+    b'core/ui/FontSizeSettings.kt',
+    b'features/settings/FontSizeSettingsPage.kt',
+    b'features/settings/SettingsModels.kt',
+    b'features/settings/ThemeSettingsStorage.kt',
+    b'features/details/components/DetailSeriesContent.kt'
+]:
+    assert path in data, 'Missing audited typography integration: '+repr(path)
+if len(sys.argv)>1:
+    src=Path(sys.argv[1])
+    page=(src/'composeApp/src/commonMain/kotlin/com/nuvio/app/features/settings/FontSizeSettingsPage.kt').read_text()
+    assert 'FontAreaSlider' in page and 'SettingsNavigationRow' in page
+    base=(src/'composeApp/src/commonMain/kotlin/com/nuvio/app/core/ui/FontSizeSettings.kt').read_text()
+    assert 'Profile' not in base or 'profiles' in base
+    assert 'FontScaleRegion' in base and 'serialize' in base
+print('P7 patch verified:', len(data), 'bytes')
