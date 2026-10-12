@@ -5,6 +5,7 @@ on:
     paths:
       - 'nuvio-mods/p7.diff.gz.b64'
       - 'nuvio-mods/apply_p7_diff.py'
+      - 'nuvio-mods/test_p7.py'
       - 'nuvio-mods/test_p6_ui.py'
       - '.github/workflows/alwan-performance-p7.yml'
   workflow_dispatch:
@@ -33,7 +34,7 @@ jobs:
           python nuvio-mods/apply_performance_p5.py nuvio
           python nuvio-mods/apply_performance_p6.py nuvio
           python nuvio-mods/apply_p7_diff.py nuvio
-          python nuvio-mods/test_p7.py
+          python nuvio-mods/test_p7.py nuvio
           python nuvio-mods/apply_performance_p6.py nuvio
           python nuvio-mods/test_p6_ui.py nuvio
       - name: Restore verified official public account client for test APK
