@@ -1,0 +1,14 @@
+{
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/cinemana/CinemanaDownloadActions.kt": {
+    "before_sha256": "e0cff9b1fbc34c8c8a578c5a668e40042212e5279551e862d0a00fecbc9474d6",
+    "after_sha256": "5c66b29178117c61eb87f92e69bd56308b71d4fa93e7c6c7f1c937a31eb57515"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/cinemana/CinemanaSingleEpisodeDownloadSheet.kt": {
+    "before_sha256": "b38ed0e5e65236d5ca19719e625b539fc15da330717338b0bf925585a6b52df0",
+    "after_sha256": "b087ffb42a68898f7f28c5b0f86db22cd50a82aa0a47e13f473bc3bb6082152e"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/cinemana/CinemanaDownloadQuality.kt": {
+    "before_sha256": null,
+    "after_sha256": "9bc08c7bba47d6797f0584f0aa9fa25783d6d9dbffc42523aadc4b5b69d9f840"
+  }
+}
