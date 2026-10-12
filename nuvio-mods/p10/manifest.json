@@ -9,6 +9,6 @@
   },
   "composeApp/src/commonMain/kotlin/com/nuvio/app/features/cinemana/CinemanaDownloadQuality.kt": {
     "before_sha256": null,
-    "after_sha256": "9bc08c7bba47d6797f0584f0aa9fa25783d6d9dbffc42523aadc4b5b69d9f840"
+    "after_sha256": "30a48b1621e086805d2c8f1b18c1a4b3d689355b15bc6927245914ffed497ac2"
   }
 }
