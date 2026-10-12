@@ -12,6 +12,7 @@ for symbol in ['loadDownloadSubtitleCatalog','subtitleIdentity','addedFileNames'
     assert symbol in text,symbol
 scheduler=(root/'composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AndroidDownloadScheduler.kt').read_text()
 assert 'destinationFor(item: DownloadItem)' in scheduler
+assert 'p11_2_subtitle_repair.flag' in scheduler
 assert 'AlwanMkvRetryWorker.schedule(' in scheduler
 export=(root/'composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt').read_text()
 assert 'addedSubtitleFiles: Set<String>?' in export

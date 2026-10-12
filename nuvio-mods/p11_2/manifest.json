@@ -22,8 +22,8 @@
     {
       "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AndroidDownloadScheduler.kt",
       "before_sha256": "73c48ed53ead4e7e6c09ac2a8cbc01141c228c043c793bc78a854afa5b85348d",
-      "after_sha256": "cf302d422e5b09e687909574d512c6ab8a89110c2de6e96f7bab47ee0d5a8dfc",
-      "bytes": 14158
+      "after_sha256": "bde8397561cbe6ee63bc3daa19fe0b5bc3d638c822a39b3773f913f3a95ae9bb",
+      "bytes": 15453
     },
     {
       "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/DownloadsPlatformDownloader.android.kt",
