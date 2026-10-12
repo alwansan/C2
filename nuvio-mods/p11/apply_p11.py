@@ -26,4 +26,14 @@ for name,data in contents.items():
 for target,data in changes:
  target.parent.mkdir(parents=True,exist_ok=True)
  target.write_bytes(data)
+# Full-source and ModKit include the original, verified standalone FFmpeg executable.
+# GitHub build fetches this exact file from a pinned public commit instead.
+native=kit/'native/arm64-v8a/libffmpeg.so'
+if native.is_file():
+ import shutil
+ binary=project/'composeApp/src/full/jniLibs/arm64-v8a/libffmpeg.so'
+ if not binary.exists():
+  binary.parent.mkdir(parents=True,exist_ok=True)
+  shutil.copyfile(native,binary)
+ print('Standalone FFmpeg installed')
 print('P11 applied',len(changes),'of',len(manifest),'files')

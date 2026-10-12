@@ -1,8 +1,4 @@
 {
-  "composeApp/build.gradle.kts": {
-    "old_sha256": "3ed26b991c3cf98193f0d43ca2f145ead3d5e270c3ad12dff82d8d23b8cbe60b",
-    "new_sha256": "e80d1301d2882fc434c7291c2a618d23ea72713c2eeb251ffceba9ccaa18321a"
-  },
   "composeApp/src/androidMain/AndroidManifest.xml": {
     "old_sha256": "d4415a0f908511eda4a9ef1ccf2c26fe2cb48dc4017c839a4c0540448c69212d",
     "new_sha256": "f1718844be7136b7212ec756251d3f5f151a2486f2d441de0fd1a7a7c62c78f2"
@@ -29,7 +25,7 @@
   },
   "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt": {
     "old_sha256": null,
-    "new_sha256": "3938c43b9bd256b00891771717b0fc753ef809e90b9906cb2c11412f1c8865e5"
+    "new_sha256": "15ea2a9bc943b7bf0f4816363c68d8761173c24c1a917d7d49c8dfeadd8c9e8b"
   },
   "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvRetryWorker.kt": {
     "old_sha256": null,

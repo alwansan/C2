@@ -44,6 +44,9 @@ jobs:
           python nuvio-mods/p10/apply_p10.py nuvio
           python nuvio-mods/p10/test_p10.py nuvio
           python nuvio-mods/p11/apply_p11.py nuvio
+          mkdir -p nuvio/composeApp/src/full/jniLibs/arm64-v8a
+          curl --fail --location --retry 3 --silent --show-error             'https://raw.githubusercontent.com/hzw1199/Android-FFmpeg-Prebuilt/90231cc0105aef4f76926b911535f5eb73511b86/ffmpeg-8.1.1/bin/ffmpeg'             -o nuvio/composeApp/src/full/jniLibs/arm64-v8a/libffmpeg.so
+          echo '480defd776199b5434008565974de5bf99822371c3cd9c1f130fda2c57de6439  nuvio/composeApp/src/full/jniLibs/arm64-v8a/libffmpeg.so' | sha256sum --check --status
           python nuvio-mods/p11/test_p11.py nuvio
           python nuvio-mods/p8/apply_p8.py nuvio
       - name: Restore verified official public account client for test APK
