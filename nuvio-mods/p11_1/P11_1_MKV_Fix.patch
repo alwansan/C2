@@ -1,0 +1,45 @@
+--- a/composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt
++++ b/composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt
+@@ -19,7 +19,7 @@
+  * Safe MKV remux for built-in Cinemana downloads, mirroring PATCH238's promotion guards:
+  *   video downloaded -> external subtitles acquired -> remux -> validate -> atomic promotion.
+  * The playable original remains intact if remux or destination promotion fails.
+- * The ffmpeg library is a maintained Android Maven AAR rather than decompiled Smali.
++ * Uses the standalone verified arm64 FFmpeg executable, not conflicting FFmpegKit libraries.
+  */
+ internal object AlwanMkvExporter {
+     private val ffmpegSlot = Semaphore(1) // one high-RAM remux at a time
+@@ -29,13 +29,14 @@
+             if (!source.isFile || source.length() <= 0L) throw IOException("Missing source video")
+             val provider = (item.providerName.orEmpty() + " " + item.providerAddonId.orEmpty()).lowercase()
+             if (!provider.contains("cinemana") && !provider.contains("سينمانا")) return@withContext source
+-            if (source.extension.equals("mkv", true)) return@withContext source
+             ffmpegSlot.withPermit {
+                 currentCoroutineContext().ensureActive()
+                 val subtitles = readySubtitles(source)
+-                // Enforce manifest readiness: never embed half-downloaded or ambiguous tracks.
+-                val result = File(source.parentFile, source.nameWithoutExtension + ".mkv")
+-                if (result.canonicalPath == source.canonicalPath) return@withPermit source
++                // MKV sources can contain tracks already. Preserve them and add new sidecars.
++                // Without new sidecars, do not remux an existing MKV unnecessarily.
++                val sourceIsMkv = source.extension.equals("mkv", ignoreCase = true)
++                if (sourceIsMkv && subtitles.isEmpty()) return@withPermit source
++                val result = if (sourceIsMkv) source else File(source.parentFile, source.nameWithoutExtension + ".mkv")
+                 val sessionKey = MessageDigest.getInstance("SHA-256")
+                     .digest((item.id + result.name).toByteArray())
+                     .take(10).joinToString("") { "%02x".format(it) }
+@@ -45,9 +46,12 @@
+                 if (staged.exists() && !staged.delete()) throw IOException("Cannot reset remux staging")
+                 val args = mutableListOf("-nostdin", "-hide_banner", "-loglevel", "error", "-y", "-i", source.absolutePath)
+                 subtitles.forEach { args += listOf("-i", it.file.absolutePath) }
+-                args += listOf("-map", "0:v:0", "-map", "0:a?", "-map", "0:t?")
++                // Map sidecars first among subtitle streams so language metadata below
++                // refers to the intended external track even when video already has
++                // embedded subtitles. Always keep embedded subtitle/attachment tracks.
++                args += listOf("-map", "0:v:0", "-map", "0:a?")
+                 subtitles.forEachIndexed { index, _ -> args += listOf("-map", "${index + 1}:0") }
+-                args += listOf("-c", "copy")
++                args += listOf("-map", "0:s?", "-map", "0:t?", "-c", "copy")
+                 subtitles.forEachIndexed { index, entry ->
+                     val lang = entry.language.replace(Regex("[^a-zA-Z0-9-]"), "").take(15).ifBlank { "und" }
+                     args += listOf("-metadata:s:s:$index", "language=$lang")
