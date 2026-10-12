@@ -1,0 +1,54 @@
+{
+  "composeApp/build.gradle.kts": {
+    "old_sha256": "3ed26b991c3cf98193f0d43ca2f145ead3d5e270c3ad12dff82d8d23b8cbe60b",
+    "new_sha256": "e80d1301d2882fc434c7291c2a618d23ea72713c2eeb251ffceba9ccaa18321a"
+  },
+  "composeApp/src/androidMain/AndroidManifest.xml": {
+    "old_sha256": "d4415a0f908511eda4a9ef1ccf2c26fe2cb48dc4017c839a4c0540448c69212d",
+    "new_sha256": "f1718844be7136b7212ec756251d3f5f151a2486f2d441de0fd1a7a7c62c78f2"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/downloads/DownloadSubtitles.kt": {
+    "old_sha256": "e117aa2efa76bae6b5ae56b38eb632e35709500254547ac87f9178511c6008e6",
+    "new_sha256": "4129a0551ada0d8416869b8868c45c114bee5ce69675730745194284b3236f0e"
+  },
+  "composeApp/src/androidMain/res/xml/file_paths.xml": {
+    "old_sha256": "2c29795ad210c381f53544606ece4bd526de521bab4f608ed8f856d6bb9ea660",
+    "new_sha256": "28b53f5670f3db11bffcea9de152acf365ed97d53f2591b0b62e1c1f443f5c5d"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AndroidDownloadScheduler.kt": {
+    "old_sha256": "0930b8d24f9b9a001faf4fa85694542e9158e19023f70754a4356931e3fe0de2",
+    "new_sha256": "73c48ed53ead4e7e6c09ac2a8cbc01141c228c043c793bc78a854afa5b85348d"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/DownloadsPlatformDownloader.android.kt": {
+    "old_sha256": "ed147fcb5d69c8397bfceb89d700b474d09bf06f1163813643301c104d48e010",
+    "new_sha256": "818c0c6af164b5f60fc749603dbf95dcf36eed1b929a0fe0d7c7151128abd1b3"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AndroidDownloadTransfer.kt": {
+    "old_sha256": "7ff7a9d1063fb5624ca3bd9a0e3599eb8cb453b454e07f48db4db1912aee5afb",
+    "new_sha256": "e939056c52dc3eda058d129c21d10668a1a7bde42fd394f63731dfc68ed4fc18"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt": {
+    "old_sha256": null,
+    "new_sha256": "3938c43b9bd256b00891771717b0fc753ef809e90b9906cb2c11412f1c8865e5"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvRetryWorker.kt": {
+    "old_sha256": null,
+    "new_sha256": "5fe1e25706c65b2723a11748a52e29b5cb1f806e51f0e2ae4e6f7524f231f67f"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanDownloadLog.kt": {
+    "old_sha256": null,
+    "new_sha256": "c65778ba32737defbb88110847517639fb854b44cc8aa95d2bddb87f6a613bcb"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/core/diagnostics/AlwanPerformanceTrace.kt": {
+    "old_sha256": "0e62f27dc68a29ca4a40f466d1793e4593829054076057a2e079f3af0de27646",
+    "new_sha256": "a697f1e5942b2a2c167380b66d9fa8de38231c50c0d0216d0dabbca7e1e51eb3"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/core/storage/AlwanBatteryGate.kt": {
+    "old_sha256": null,
+    "new_sha256": "03a4fa300575c65e159e9057a22294edcb71d1b9e65767b153e20404e6c12a39"
+  },
+  "composeApp/src/androidMain/kotlin/com/nuvio/app/core/storage/AlwanStorage.kt": {
+    "old_sha256": "356da5dfa7fbbd1842bebbdff34c85e42fb484a9299220bab7d7e0ee08ba563d",
+    "new_sha256": "c7fde953161ab6cf72dd60a248f0006ef338cbae70d4ae99d7975aee9c4d86be"
+  }
+}
