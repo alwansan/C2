@@ -53,7 +53,6 @@ jobs:
           python nuvio-mods/p11_2/apply.py nuvio
           python nuvio-mods/p11_2/test_p11_2.py nuvio
           python nuvio-mods/p11_2/apply.py nuvio
-          python nuvio-mods/p11_1/apply.py nuvio
           python nuvio-mods/p8/apply_p8.py nuvio
       - name: Restore verified official public account client for test APK
         shell: bash
