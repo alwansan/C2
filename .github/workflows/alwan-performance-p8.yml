@@ -1,0 +1,83 @@
+name: AlwanCinema P8 responsive Arabic titles
+on:
+  push:
+    branches: [alwan-clean-nuvio]
+    paths:
+      - 'nuvio-mods/p8/**'
+      - '.github/workflows/alwan-performance-p8.yml'
+
+
+
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Fetch pinned Nuvio 0.5.9 base
+        run: |
+          git clone --filter=blob:none https://github.com/NuvioMedia/NuvioMobile.git nuvio
+          git -C nuvio checkout db0c50b503039863909c86405907462bf1752193
+      - name: Apply P3-P7 and reviewed P8 title layout fixes
+        run: |
+          python nuvio-mods/install.py nuvio
+          python nuvio-mods/apply_performance_p3.py nuvio
+          python nuvio-mods/apply_performance_p4.py nuvio
+          python nuvio-mods/apply_performance_p5.py nuvio
+          python nuvio-mods/apply_performance_p6.py nuvio
+          python nuvio-mods/apply_p7_diff.py nuvio
+          python nuvio-mods/test_p7.py nuvio
+          python nuvio-mods/apply_performance_p6.py nuvio
+          python nuvio-mods/test_p6_ui.py nuvio
+          python nuvio-mods/p8/apply_p8.py nuvio
+          python nuvio-mods/p8/test_p8.py nuvio
+          python nuvio-mods/p8/apply_p8.py nuvio
+      - name: Restore verified official public account client for test APK
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://github.com/NuvioMedia/NuvioMobile/releases/download/0.5.9-beta/androidApp-full-arm64-v8a-release.apk' \
+            --output /tmp/nuvio-official-0.5.9.apk
+          echo 'feb45afa85414c785d101919ca51eca99354b6f0294b2ddcb00086541da2f566  /tmp/nuvio-official-0.5.9.apk' | sha256sum --check --status
+          python nuvio-mods/configure_public_backend_from_official_apk.py /tmp/nuvio-official-0.5.9.apk nuvio
+          rm -f /tmp/nuvio-official-0.5.9.apk
+          ./nuvio/gradlew -p nuvio :composeApp:verifyAlwanAccountBackend -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore --no-configuration-cache
+      - name: Run provider regression tests
+        run: node --test test/*.test.js
+      - name: Build arm64 Release APK (test signed)
+        working-directory: nuvio
+        run: |
+          chmod +x gradlew
+          ./gradlew :androidApp:assembleFullRelease -Pnuvio.android.distribution=full -Pnuvio.ios.distribution=appstore -Palwan.testSigning=true --no-daemon --stacktrace
+      - name: Verify final APK
+        run: |
+          test -s nuvio/androidApp/build/outputs/apk/full/release/androidApp-full-arm64-v8a-release.apk
+          sha256sum nuvio/androidApp/build/outputs/apk/full/release/androidApp-full-arm64-v8a-release.apk | tee apk-sha256.txt
+          python - <<'PY_CHECK'
+          from pathlib import Path
+          from zipfile import ZipFile
+          apk=Path('nuvio/androidApp/build/outputs/apk/full/release/androidApp-full-arm64-v8a-release.apk')
+          with ZipFile(apk) as z:
+              assert z.testzip() is None
+              assert 'classes.dex' in z.namelist()
+              dex=b''.join(z.read(x) for x in z.namelist() if x.endswith('.dex'))
+              assert b'api.nuvio.tv' in dex and b'get_avatar_catalog' in dex
+          print('Verified P8 APK and public account integration')
+          PY_CHECK
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: AlwanCinema-P8-Responsive-Titles-arm64
+          path: |
+            nuvio/androidApp/build/outputs/apk/full/release/androidApp-full-arm64-v8a-release.apk
+            apk-sha256.txt
+            nuvio/composeApp/build/reports/
+          if-no-files-found: warn

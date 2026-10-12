@@ -1,0 +1,18 @@
+{
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/core/ui/Components.kt": {
+    "old": "b010f410f4ec0eee9e163de44f9a039b5e219873f78538675d6e287494b60f0f",
+    "new": "e7ad22eeb2a27b1d4a5112a768e86bedea0787d298f446395ee91e7816ad9c69"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/details/components/DetailHero.kt": {
+    "old": "967c5dff26c5ec8a82538813956089def1850d383a6caf92027d36f8248e5b6c",
+    "new": "748072959a310126f9b056d7e5fd689337d27084e6c2e699a0f8df97bd653fb3"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/streams/StreamsScreen.kt": {
+    "old": "4fd78b4b078c31b0c531cd8c8e4ab3701dca5638b2f99c167318ee7da16fc0a0",
+    "new": "390ed3622efd8ed483003c0dc016b852757fba486a0344b1afa202185348bb7a"
+  },
+  "composeApp/src/commonMain/kotlin/com/nuvio/app/features/settings/SettingsComponents.kt": {
+    "old": "999a8293554cad10ce1f490ca6959aaaf102ad390a2d48be95438f6da581879b",
+    "new": "8f70b5a673d21af34ad8bf50816975089bdcdf811bb751fd1cb6478ccd125d93"
+  }
+}
