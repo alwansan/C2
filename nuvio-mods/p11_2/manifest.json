@@ -1,0 +1,53 @@
+{
+  "version": "P11.2",
+  "changes": [
+    {
+      "path": "composeApp/src/commonMain/kotlin/com/nuvio/app/features/downloads/DownloadSubtitles.kt",
+      "before_sha256": "4129a0551ada0d8416869b8868c45c114bee5ce69675730745194284b3236f0e",
+      "after_sha256": "8fab95bc64938889340e8060fb57818e0d63d64333d8e4742da91811b44a0f25",
+      "bytes": 6645
+    },
+    {
+      "path": "composeApp/src/commonMain/kotlin/com/nuvio/app/features/player/AddonSubtitleLoader.kt",
+      "before_sha256": "5e29312e9f7ff8e624af0de9a57f5e159b348620573b3c0f48f84fb4e5fd8301",
+      "after_sha256": "32c34c7c22201d19f769b409dbbd72389f9aa56558108a77073984cd83fdcb86",
+      "bytes": 5540
+    },
+    {
+      "path": "composeApp/src/androidMain/assets/cinemana/bundle.js",
+      "before_sha256": "7f9746628efa6b18ca139f475639533076571a4df7f384817b93aa532a1dd2ae",
+      "after_sha256": "7136630ae2c2c412736d5c6457dedc398eec12b1891b883993892fe408552aa2",
+      "bytes": 40201
+    },
+    {
+      "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AndroidDownloadScheduler.kt",
+      "before_sha256": "73c48ed53ead4e7e6c09ac2a8cbc01141c228c043c793bc78a854afa5b85348d",
+      "after_sha256": "cf302d422e5b09e687909574d512c6ab8a89110c2de6e96f7bab47ee0d5a8dfc",
+      "bytes": 14158
+    },
+    {
+      "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/DownloadsPlatformDownloader.android.kt",
+      "before_sha256": "818c0c6af164b5f60fc749603dbf95dcf36eed1b929a0fe0d7c7151128abd1b3",
+      "after_sha256": "36ffbcaba5a960f4379c213ea134fa5fd4718c9bb8a319f61804c5007473f504",
+      "bytes": 7048
+    },
+    {
+      "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvExporter.kt",
+      "before_sha256": "8cec87580ea44443626272f9c7fdae26512db7432cc669f75e1ab5cb8dd446ff",
+      "after_sha256": "4eef58c1d363d0270ae09f5fab142bdba829e01bb0490491840060d81ff1760e",
+      "bytes": 8488
+    },
+    {
+      "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanMkvRetryWorker.kt",
+      "before_sha256": "5fe1e25706c65b2723a11748a52e29b5cb1f806e51f0e2ae4e6f7524f231f67f",
+      "after_sha256": "d8ef21c05c0c036b18d5ebfc916e0eda72c9edf785f41a9ad97fddfd8afe807f",
+      "bytes": 4314
+    },
+    {
+      "path": "composeApp/src/androidMain/kotlin/com/nuvio/app/features/downloads/AlwanDownloadLog.kt",
+      "before_sha256": "c65778ba32737defbb88110847517639fb854b44cc8aa95d2bddb87f6a613bcb",
+      "after_sha256": "8f1dba6e453977f851431bb0bad92d13296d0fe4c80cadfa9beaa88d209d271b",
+      "bytes": 2611
+    }
+  ]
+}
